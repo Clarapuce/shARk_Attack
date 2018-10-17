@@ -10,26 +10,17 @@ yC = coinsVideo(3,2);
 xD = coinsVideo(4,1);
 yD = coinsVideo(4,2);
 
-xAp = coinsImage(1);
-yAp = coinsImage(2);
-xBp = coinsImage(3);
-yBp = coinsImage(4);
-xCp = coinsImage(5);
-yCp = coinsImage(6);
-xDp = coinsImage(7);
-yDp = coinsImage(8);
-
+xAp = coinsImage(1,1);
+yAp = coinsImage(2,1);
+xBp = coinsImage(3,1);
+yBp = coinsImage(4,1);
+xCp = coinsImage(5,1);
+yCp = coinsImage(6,1);
+xDp = coinsImage(7,1);
+yDp = coinsImage(8,1);
 
 % on a la matrice :
-mat1 = [xA yA 1 0 0 0 -xA*xAp -yA*xAp ;
-        0 0 0 xA yA 1 -xA*yAp - yA*yAp;
-        xB yB 1 0 0 0 -xB*xBp -yB*xBp ;
-        0 0 0 xB yB 1 -xB*yBp - yB*yBp;
-        xC yC 1 0 0 0 -xC*xCp -yC*xCp ;
-        0 0 0 xC yC 1 -xC*yCp - yC*yCp;
-        xD yD 1 0 0 0 -xD*xDp -yD*xDp ;
-        0 0 0 xD yD 1 -xD*yDp - yD*yDp;];
-    
+mat1 = [xA yA 1 0 0 0 -xA*xAp -yA*xAp;0 0 0 xA yA 1 -xA*yAp -yA*yAp;xB yB 1 0 0 0 -xB*xBp -yB*xBp;0 0 0 xB yB 1 -xB*yBp -yB*yBp;xC yC 1 0 0 0 -xC*xCp -yC*xCp ;0 0 0 xC yC 1 -xC*yCp -yC*yCp;xD yD 1 0 0 0 -xD*xDp -yD*xDp ;0 0 0 xD yD 1 -xD*yDp -yD*yDp;];
     % or : mat1 * X = coinsImage --> X = inv(mat1) * coinsImage 
     
 X = mat1 \ coinsImage ;
