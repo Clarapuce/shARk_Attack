@@ -20,22 +20,21 @@ H = TrouveH(coinsVideo, coinsImage);
 
 for i = 1:hVid
     for j = 1:lVid
-        i
-        j
-        A = [i j];
-        AH = homogeneisator(A).'
-        BH = H*AH 
-        B = dehomogeneisator(BH)
-        B = int16(B)
+        A = [i;j];
+        AH = homogeneisator(A);
+        BH = H^(-1)*AH ;
+        B = dehomogeneisator(BH);
+        B = int16(B);
         
-        Bx = B(1)
-        By = B(2)
+        Bx = B(1);
+        By = B(2);
         
-        if (Bx < lImg) && (Bx > 0) && (By > 0) && (By < hImg) %si le point est dans l'image
+        if (Bx <= lImg) && (Bx > 0) && (By > 0) && (By <= hImg) %si le point est dans l'image
             %on remplace par le pixel de la vidéo par le pixel de l'image
-            frame(i,j) = img(Bx,By); %récupère le RGB normalement 
-        end
-            
+            frame(i,j,1) = img(Bx,By,1); %récupère le RGB normalement 
+            frame(i,j,2) = img(Bx,By,2);
+            frame(i,j,3) = img(Bx,By,3);
+        end          
         
     end
 end
