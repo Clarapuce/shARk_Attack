@@ -1,0 +1,23 @@
+function [frame] = appli_homo_non_opti(frame,img,H)
+
+[hVid,lVid] = size(frame);
+[hImg,lImg] = size(img);
+for x = 1:lVid
+    for y = 1:hVid
+        A = [x;y];
+        AH = homogeneisator(A);
+        BH = H*AH ;
+        B = dehomogeneisator(BH);
+        B = int16(B);
+        
+        Bx = B(1);
+        By = B(2);
+        
+        if (Bx <= lImg) && (Bx > 0) && (By > 0) && (By <= hImg) %si le point est dans l'image
+            %on remplace par le pixel de la vidéo par le pixel de l'image
+            
+        end        
+    end
+end
+
+end
