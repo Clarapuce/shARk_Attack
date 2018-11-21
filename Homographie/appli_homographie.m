@@ -11,8 +11,8 @@ B = H * A; %PAS OK
 Bx = B(1,:);
 By = B(2,:);
 SB = B(3,:);
-Bx = int16(Bx ./ SB);
-By = int16(By ./ SB); %OK
+Bx = double(int16(Bx ./ SB));
+By = double(int16(By ./ SB)); %OK
 
 
 end
