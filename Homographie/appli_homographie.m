@@ -1,4 +1,4 @@
-function [Bx,By,Ax,Ay] = appli_homographie(frame,img,H)
+function [Ax,Ay,Bx,By] = appli_homographie(frame,img,H)
 [hImg,lImg] = size(img);
 [hVid,lVid] = size(frame);
 [Ax,Ay] = meshgrid(1:lVid, 1:hVid);%OK
