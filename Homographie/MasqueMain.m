@@ -7,7 +7,6 @@ numFrames = get(vid,'NumberOfFrames');
 
 %Extraction d'une frame
 frame = read(vid,100);
-
 %% Etape 1 : On crée une image Region qui contient des 0 jusqu’au 3/4 de l’image, et des 1 à l’intérieur de ce rectangle R (car c’est proche de là où commence la main sur la feuille).
 Region = zeros(100);
 for x = 1:100
@@ -20,13 +19,15 @@ end
 
 %% Etape 2 : On projette par homographie cette image dans le cadre de la vidéo. On obtient le Masque1 qui contient des 0 de partout en dehors de la région R, et des 1 dans la région R.
 
-[hImg,lImg] = [100,100];
+[hImg,lImg] = size(Region);
 coinsRegion = [1;1;1;lImg;hImg;lImg;hImg;1];
 coinsVideo = cornerTestMasque(frame);
 H = TrouveH(coinsVideo, coinsRegion);
 
 [Ax1,Ay1,Bx1,By1]=appli_homographie(frame,Region,H);
-frame=projection(frame,Region,Ax1,Ay1,Bx1,By1);
+[Ax1,Ay1,Bx1,By1]=garder_bon_points(Ax1,Ay1,Bx1,By1,Region);
+frameNew=projection2(frame,Region,Ax1,Ay1,Bx1,By1);
+image(frameNew)
 %% Etape 3 : Masque2 qui détecte la feuille grâce à la couleur
 
 R = frame(:,:,1);
