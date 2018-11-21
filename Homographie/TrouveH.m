@@ -1,14 +1,14 @@
 % si on livre les 4 points sous ce format là
 function [H] = TrouveH(coinsVideo, coinsImage)
 
-xA = coinsVideo(1,1); %ligne, colonne
-yA = coinsVideo(1,2);
-xB = coinsVideo(2,1);
-yB = coinsVideo(2,2);
-xC = coinsVideo(3,1);
-yC = coinsVideo(3,2);
-xD = coinsVideo(4,1);
-yD = coinsVideo(4,2);
+xA = coinsVideo(1); 
+yA = coinsVideo(2); 
+xB = coinsVideo(3);
+yB = coinsVideo(4);
+xC = coinsVideo(5);
+yC = coinsVideo(6);
+xD = coinsVideo(7);
+yD = coinsVideo(8);
 
 xAp = coinsImage(1);
 yAp = coinsImage(2);
@@ -20,7 +20,14 @@ xDp = coinsImage(7);
 yDp = coinsImage(8);
 
 % on a la matrice :
-mat1 = [xA yA 1 0 0 0 -xA*xAp -yA*xAp;0 0 0 xA yA 1 -xA*yAp -yA*yAp;xB yB 1 0 0 0 -xB*xBp -yB*xBp;0 0 0 xB yB 1 -xB*yBp -yB*yBp;xC yC 1 0 0 0 -xC*xCp -yC*xCp ;0 0 0 xC yC 1 -xC*yCp -yC*yCp;xD yD 1 0 0 0 -xD*xDp -yD*xDp ;0 0 0 xD yD 1 -xD*yDp -yD*yDp];
+mat1 = [xA yA 1 0 0 0 -xA*xAp -yA*xAp;...
+    0 0 0 xA yA 1 -xA*yAp -yA*yAp;...
+    xB yB 1 0 0 0 -xB*xBp -yB*xBp;...
+    0 0 0 xB yB 1 -xB*yBp -yB*yBp;...
+    xC yC 1 0 0 0 -xC*xCp -yC*xCp ;...
+    0 0 0 xC yC 1 -xC*yCp -yC*yCp;...
+    xD yD 1 0 0 0 -xD*xDp -yD*xDp ;
+    0 0 0 xD yD 1 -xD*yDp -yD*yDp];
     % or : mat1 * X = coinsImage --> X = inv(mat1) * coinsImage 
     
 X = mat1 \ coinsImage ;
