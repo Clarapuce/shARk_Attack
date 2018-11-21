@@ -20,7 +20,7 @@ end
 
 %% Etape 2 : On projette par homographie cette image dans le cadre de la vidéo. On obtient le Masque1 qui contient des 0 de partout en dehors de la région R, et des 1 dans la région R.
 
-[hImg,lImg] = [100,100];
+[hImg,lImg] = [100;100]; 
 coinsRegion = [1;1;1;lImg;hImg;lImg;hImg;1];
 coinsVideo = cornerTestMasque(frame);
 H = TrouveH(coinsVideo, coinsRegion);
