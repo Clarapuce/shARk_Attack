@@ -1,7 +1,18 @@
-function [] = homographie(frame, img )
+function [frame] = homographie(frame, img )
 
+%=========COINS VIDEO FEUILLE==============
+coinsVideo = corner(frame);
+[hVid,lVid,Prof] = size(frame);
+%coinsVideo = [1;1;lVid;1;lVid;hVid;1;hVid];
+%[x1;y1;x2;y2;... ]
+%les coins de l'image
 
-H = TrouveH(coinsVideo, coinsImage); %OK
+%=========PARAMETRES VIDEO PROJETE==============
+[hImg,lImg,Prof2] = size(img);
+coinsImage = [1;1;lImg;1;lImg;hImg;1;hImg];
+
+%===========TROUVER MATRICE D'HOMOGRAPHIE======
+H = TrouveH(coinsVideo, coinsImage); 
 
 %=========APPLICATION HOMOGRAPHIE==============
 
@@ -19,7 +30,6 @@ frame=projection(frame,img,Ax1,Ay1,Bx1,By1);
 % frame=projection(frame,img,Ax,Ay,Bx,By);
 
 %=========AFFICHAGE IMAGE==============
-image(frame)
 
 end
 
