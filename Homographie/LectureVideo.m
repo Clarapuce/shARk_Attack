@@ -7,16 +7,18 @@ open(v);
 %=========PARAMETRES VIDEO PAPIER==============
 vid = VideoReader('vid_in2.mp4');
 numFrames = get(vid,'NumberOfFrames');
-frame = read(vid,1);
+
 
 %=========PARAMETRES VIDEO PROJETER==============
 vid2=VideoReader('shark.avi');
 numFrames2 = get(vid2,'NumberOfFrames');
 
+coins = corners(vid);
 %Extraction d'une frame
-for i=32:numFrames
-    frame2 = read(vid2,i);
-    newframe=homographie(frame,frame2);
+for i=1:numFrames
+    frame = read(vid,i);
+    frame2 = read(vid2,i+32);
+    newframe=homographie(frame,frame2,coins(i));
     writeVideo(v, newframe);
 end
 close(v)
