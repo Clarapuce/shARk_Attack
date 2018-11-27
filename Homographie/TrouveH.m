@@ -1,14 +1,14 @@
 % si on livre les 4 points sous ce format là
 function [H] = TrouveH(coinsVideo, coinsImage)
 
-xA = coinsVideo(1); 
-yA = coinsVideo(2); 
-xB = coinsVideo(3);
-yB = coinsVideo(4);
-xC = coinsVideo(5);
-yC = coinsVideo(6);
-xD = coinsVideo(7);
-yD = coinsVideo(8);
+xA = coinsVideo{1}(1,1); 
+yA = coinsVideo{1}(1,2); 
+xB = coinsVideo{1}(2,1);
+yB = coinsVideo{1}(2,2);
+xC = coinsVideo{1}(3,1);
+yC = coinsVideo{1}(3,2);
+xD = coinsVideo{1}(4,1);
+yD = coinsVideo{1}(4,2);
 
 xAp = coinsImage(1);
 yAp = coinsImage(2);
