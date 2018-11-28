@@ -1,5 +1,12 @@
-function [frame] = ramenerMain(frame,main)
-pos = find(main==1); %position de tout ceux qui respectent ces conditions
-frame(
-
+function [frameChange] = ramenerMain(frameInit,frameChange,main)
+%pos = find(main==1); %position de tout ceux qui respectent ces conditions
+for i=1:1080
+    for j=1:1920
+        if main(i,j) == 1
+            frameChange(i,j,1) = frameInit(i,j,1);
+            frameChange(i,j,2) = frameInit(i,j,2);
+            frameChange(i,j,3) = frameInit(i,j,1);
+        end
+    end
+end
 end

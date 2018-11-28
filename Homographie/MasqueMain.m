@@ -15,16 +15,17 @@ end
 [hFrame,lFrame,profFrame] = size(frame);
 Region = cat(3,Region,Region,Region);
 Masque1 = zeros(hFrame,lFrame,profFrame);
-Masque1 = homographieMain(Masque1,Region, coin);
+Masque1 = homographie(Masque1,Region, coin);
 
 %% Etape 3 : Masque2 qui détecte la feuille grâce à la couleur
 
 R = frame(:,:,1);
 G = frame(:,:,2);
 B = frame(:,:,3);
-thold = 120;
-mask = find(G>thold & B>thold);
-mask2 = find(G<thold & B<thold);
+tholdG = 125;
+tholdB = 165;
+mask = find(G>tholdG & B>tholdB);
+mask2 = find(G<tholdG & B<tholdB);
 R(mask) = 1 ;
 G(mask) = 1 ;
 B(mask) = 1;
