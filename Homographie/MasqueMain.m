@@ -4,7 +4,7 @@ function [MasqueGlobal] = MasqueMain(frame, coin)
 Region = zeros(100);
 for x = 1:100
     for y = 1:100
-        if x > 76 && y>26 && y <76
+        if x > 76 && y>15 && y <76
             Region(y,x) = 1;
         end
     end
